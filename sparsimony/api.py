@@ -46,7 +46,7 @@ def rigl(
             t_end=t_end,
             delta_t=delta_t,
         ),
-        distribution=ERKDistribution(),
+        distribution=ERKDistribution(excluded_mod_name_regexs=["fc3"]),
         optimizer=optimizer,
         sparsity=sparsity,
     )

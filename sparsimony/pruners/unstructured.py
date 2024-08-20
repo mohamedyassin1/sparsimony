@@ -39,6 +39,7 @@ class UnstructuredRandomPruner(BasePruner):
         )
         if dist.is_initialized():
             dist.all_reduce(scores, dist.ReduceOp.AVG, async_op=False)
+        print("SPARSITY: ", sparsity)
         _, indices = torch.topk(scores.view(-1), k=n_drop, largest=True)
         mask = (
             mask.view(-1)
